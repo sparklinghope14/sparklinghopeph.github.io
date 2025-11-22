@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sparkling Hope PH — Ignite Change</title>
+  <meta name="description" content="Sparkling Hope PH — youth-led org for environment, education, and community empowerment." />
+  <style>
+    :root{
+      --bg:#f4f6f8; --card:#ffffff; --muted:#667085; --accent:#ffb600; --accent-2:#ff7a00; --glass: rgba(255,255,255,0.6);
+      --dark-bg:#0b1020; --dark-card:#0f1724; --dark-muted:#9aa4b2; --dark-glass: rgba(255,255,255,0.04);
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter,ui-sans-serif,system-ui,Arial,sans-serif;background:var(--bg);color:#0b1220;margin:0;line-height:1.5}
+    header{background:linear-gradient(135deg,var(--accent),var(--accent-2));padding:28px 18px;display:flex;align-items:center;gap:18px}
+    .logo{display:flex;align-items:center;gap:12px;color:#081126}
+    .logo svg{width:56px;height:56px}
+    .brand{font-weight:800;font-size:20px;letter-spacing:1px}
+    nav{display:flex;gap:14px;margin-left:auto}
+    nav a{color:#081126;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:8px}
+    nav a:hover{background:rgba(11,18,32,0.06)}
+    .container{max-width:1100px;margin:40px auto;padding:0 18px}
+    .hero{background:linear-gradient(180deg, rgba(11,18,32,0.06), transparent), url('https://via.placeholder.com/1600x700') center/cover no-repeat;border-radius:14px;padding:60px;color:white;display:flex;gap:24px;align-items:center}
+    .hero h1{font-size:40px;margin:0 0 12px}
+    .hero p{margin:0;max-width:650px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+    .card{background:var(--card);padding:20px;border-radius:12px;box-shadow:0 6px 20px rgba(11,18,32,0.06);transition:transform .28s,box-shadow .28s}
+    .card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(11,18,32,0.08)}
+    h2.section{font-size:22px;margin-bottom:14px}
+    .muted{color:var(--muted)}
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+    .gallery img{width:100%;height:120px;object-fit:cover;border-radius:8px;cursor:pointer}
+    /* Contact */
+    form{display:grid;gap:12px}
+    input,textarea,button{padding:12px;border-radius:8px;border:1px solid #e6e9ee;font-size:15px}
+    button{background:var(--accent);border:none;color:#081126;font-weight:700;cursor:pointer}
+    footer{margin-top:40px;padding:24px;text-align:center;color:var(--muted)}
+    /* Dark mode */
+    .dark{background:var(--dark-bg);color:#e6eef8}
+    .dark .card{background:var(--dark-card);box-shadow:0 6px 20px rgba(2,6,23,0.6)}
+    .dark header{background:linear-gradient(135deg,#2b2f3a,#1b2128)}
+    /* small screens */
+    @media (max-width:700px){.hero{flex-direction:column;align-items:flex-start;padding:28px}.logo span{display:none}.nav-toggle{display:block}}
+    /* subtle entrance animation */
+    .reveal{opacity:0;transform:translateY(18px);transition:all .7s ease-out}
+    .reveal.visible{opacity:1;transform:none}
+    /* modal */
+    .modal{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:flex;align-items:center;justify-content:center;visibility:hidden;opacity:0;transition:opacity .18s,visibility .18s}
+    .modal.open{visibility:visible;opacity:1}
+    .modal .imgwrap{max-width:900px;width:94%;}
+    .modal img{width:100%;border-radius:10px}
+    .topbar{display:flex;gap:12px;align-items:center}
+    .controls{margin-left:auto;display:flex;gap:8px}
+    .chip{padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.12);cursor:pointer}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <!-- Inline SVG logo (spark + leaf) -->
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="g" x1="0" x2="1">
+            <stop offset="0" stop-color="#ffd24d"/>
+            <stop offset="1" stop-color="#ff7a00"/>
+          </linearGradient>
+        </defs>
+        <circle cx="32" cy="32" r="30" fill="url(#g)" />
+        <path d="M20 36c4-10 16-12 20-14-6 10-6 18-6 18s-8-6-14-4z" fill="#fff" opacity="0.95"/>
+        <path d="M44 24c-6 6-10 8-10 8s4 6 10 8c-4-6-4-10-4-10s2-6 4-6z" fill="#0b1220" opacity="0.85"/>
+      </svg>
+      <div>
+        <div class="brand">Sparkling Hope PH</div>
+        <div class="muted" style="font-size:12px">Igniting Change — Inspiring Hope</div>
+      </div>
+    </div>
+    <nav aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#advocacies">Advocacies</a>
+      <a href="#projects">Projects</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+      <div class="controls" style="margin-left:12px">
+        <div id="darkToggle" class="chip" title="Toggle dark mode">🌙</div>
+        <a href="#" id="downloadBtn" class="chip">⬇️ Download</a>
+      </div>
+    </nav>
+  </header>  <main class="container">
+    <section class="hero card">
+      <div>
+        <h1 class="reveal">We are youth. We are action. We are Sparkling Hope.</h1>
+        <p class="muted reveal" style="margin-top:12px">Sparkling Hope PH is a youth-led organization from Cagayan focused on environment, education, and community outreach. Join our programs, volunteer, or support our campaigns.</p>
+        <div style="margin-top:18px;display:flex;gap:12px">
+          <a href="#projects" class="card" style="background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#081126;padding:12px 18px;border-radius:10px;font-weight:800;text-decoration:none">See Projects</a>
+          <a href="#contact" class="card" style="background:#fff;border:1px solid #e9eef6;padding:12px 18px;text-decoration:none;color:var(--muted)">Contact Us</a>
+        </div>
+      </div>
+    </section><section id="about" style="margin-top:30px">
+  <h2 class="section">About Us</h2>
+  <div class="grid">
+    <div class="card reveal">
+      <h3>Who we are</h3>
+      <p class="muted">A youth organization that builds community programs for health, education, and the environment. We lead tree plantings, feeding drives, and learning support activities.</p>
+    </div>
+    <div class="card reveal">
+      <h3>Why we exist</h3>
+      <p class="muted">Because youth-led actions create sustainable change. We train leaders, provide resources, and foster community alliances to uplift the most vulnerable.</p>
+    </div>
+  </div>
+</section>
+
+<section id="advocacies" style="margin-top:24px">
+  <h2 class="section">Our Advocacies</h2>
+  <div class="grid">
+    <div class="card reveal"><h3>Kalusugan (Health)</h3><p class="muted">Health education, community check-ups, and sanitation programs.</p></div>
+    <div class="card reveal"><h3>Kaalaman (Education)</h3><p class="muted">School supplies, learning sessions, and youth training.</p></div>
+    <div class="card reveal"><h3>Kalikasan (Environment)</h3><p class="muted">Reforestation, clean-ups, and waste reduction campaigns.</p></div>
+  </div>
+</section>
+
+<section id="projects" style="margin-top:24px">
+  <h2 class="section">Projects & Programs</h2>
+  <div class="grid">
+    <div class="card reveal"><h3>Tree Planting</h3><p class="muted">Annual drives to restore local watersheds and urban green spaces.</p></div>
+    <div class="card reveal"><h3>Feeding Programs</h3><p class="muted">Regular community feeding events for children and families in need.</p></div>
+    <div class="card reveal"><h3>School Support</h3><p class="muted">Supply drives, reading sessions, and tutorial programs.</p></div>
+    <div class="card reveal"><h3>Awareness Campaigns</h3><p class="muted">Health, environmental protection, and youth civic engagement.</p></div>
+  </div>
+</section>
+
+<section id="gallery" style="margin-top:24px">
+  <h2 class="section">Gallery</h2>
+  <div class="gallery" aria-live="polite">
+    <img src="https://via.placeholder.com/400x300?text=Tree+Planting" alt="Tree planting" class="reveal gallery-img"/>
+    <img src="https://via.placeholder.com/400x300?text=Feeding+Drive" alt="Feeding drive" class="reveal gallery-img"/>
+    <img src="https://via.placeholder.com/400x300?text=School+Support" alt="School support" class="reveal gallery-img"/>
+    <img src="https://via.placeholder.com/400x300?text=Awareness+Campaign" alt="Awareness campaign" class="reveal gallery-img"/>
+  </div>
+</section>
+
+<section id="contact" style="margin-top:24px">
+  <h2 class="section">Contact & Volunteer</h2>
+  <div class="grid">
+    <div class="card reveal">
+      <h3>Get in touch</h3>
+      <p class="muted">Email: <strong>sparklinghopeph@gmail.com</strong><br>Facebook: Sparkling Hope PH Official Page</p>
+      <p class="muted">Or message us using the form — we reply within 3–7 business days.</p>
+    </div>
+    <div class="card reveal">
+      <form id="contactForm" action="https://formspree.io/f/your-form-id" method="POST">
+        <!-- Replace the action above with your Formspree endpoint OR use Netlify Forms when deploying to Netlify -->
+        <input type="text" name="name" placeholder="Your full name" required />
+        <input type="email" name="email" placeholder="Email address" required />
+        <input type="text" name="subject" placeholder="Subject" />
+        <textarea name="message" rows="5" placeholder="Write your message..." required></textarea>
+        <button type="submit">Send Message</button>
+        <p class="muted" style="font-size:13px;margin-top:8px">If you prefer, email us directly at sparklinghopeph@gmail.com</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="muted">© 2025 Sparkling Hope PH — All Rights Reserved • Founded by Richard A. Taruc Jr.</div>
+</footer>
+
+  </main>  <!-- modal preview for gallery -->  <div id="modal" class="modal" aria-hidden="true">
+    <div class="imgwrap card">
+      <button id="closeModal" style="float:right;border:none;background:none;font-size:20px;cursor:pointer">✕</button>
+      <img id="modalImg" src="" alt="Preview" />
+    </div>
+  </div>  <script>
+    // Reveal on scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible') })
+    },{threshold:0.12});
+    revealEls.forEach(el=>io.observe(el));
+
+    // Dark mode toggle (persist in localStorage)
+    const darkToggle = document.getElementById('darkToggle');
+    function setDark(d){ document.documentElement.classList.toggle('dark', d); localStorage.setItem('sh:dark', d) }
+    const pref = localStorage.getItem('sh:dark') === 'true'; setDark(pref);
+    darkToggle.addEventListener('click', ()=> setDark(!document.documentElement.classList.contains('dark')) );
+
+    // Gallery modal
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+    document.querySelectorAll('.gallery-img').forEach(img=>{
+      img.addEventListener('click', ()=>{
+        modalImg.src = img.src; modal.classList.add('open'); modal.setAttribute('aria-hidden','false')
+      })
+    });
+    document.getElementById('closeModal').addEventListener('click', ()=>{ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true') });
+    modal.addEventListener('click',(e)=>{ if(e.target===modal) { modal.classList.remove('open'); modal.setAttribute('aria-hidden','true') } });
+
+    // Download button: triggers file download of current HTML (client side)
+    document.getElementById('downloadBtn').addEventListener('click', (e)=>{
+      e.preventDefault();
+      fetch(window.location.href).then(r=>r.text()).then(t=>{
+        const blob = new Blob([t],{type:'text/html'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a'); a.href=url; a.download='index.html'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+      })
+    });
+
+    // Contact form: simple client-side success message (non-blocking)
+    document.getElementById('contactForm').addEventListener('submit', (e)=>{
+      // let form submit normally (to Formspree). show a quick toast
+      const b = document.createElement('div'); b.textContent='Sending...'; b.style.position='fixed'; b.style.right='18px'; b.style.bottom='18px'; b.style.padding='10px 14px'; b.style.borderRadius='8px'; b.style.background='rgba(11,18,32,0.9)'; b.style.color='white'; document.body.appendChild(b);
+      setTimeout(()=>b.remove(),3500);
+    });
+  </script></body>
+</html>
